@@ -212,13 +212,13 @@ matrix:
     # Start of the allow_failures block
 
     # ASan-instrumented threaded latest 5.24 with blead CPAN, no tests on depchain ( run only DBICs tests )
-    - perl: "devcpan_5.24.3_thr_asan"
+    - perl: "devcpan_5.24.4_thr_asan"
       sudo: required
       dist: trusty
       env:
         - CLEANTEST=false
         - DEVREL_DEPS=true
-        - BREWVER=5.24.3
+        - BREWVER=5.24.4-RC1
         # FIXME - need to switch to gcc-7 for -fsanitize-address-use-after-scope,
         #         https://github.com/travis-ci/apt-package-whitelist/issues/3933
         #         https://travis-ci.org/Perl5/DBIx-Class/jobs/356823605#L3479-L3926
@@ -374,7 +374,7 @@ matrix:
   allow_failures:
 
     # these run with various dev snapshots - allowed to fail
-    - perl: devcpan_5.24.3_thr_asan
+    - perl: devcpan_5.24.4_thr_asan
     - perl: devcpan_bleadperl_thr_mb_asan
     - perl: devcpan_bleadperl_thr_mb
     - perl: bleadperl
