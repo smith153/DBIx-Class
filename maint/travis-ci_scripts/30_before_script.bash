@@ -258,6 +258,11 @@ if [[ "$MVDT" == "true" ]] && ( perl -MDBD::SQLite\ 1.38 -e1 || perl -MDBI\ 1.61
   exit 1
 fi
 
+while perl -MMath::Base36 -e1 &>/dev/null ; do
+  # remove the module to check for optdeps misbehavior
+  rm -f $(perldoc -l Math::Base36)
+done
+
 echo_err "
 ===================== DEPENDENCY CONFIGURATION COMPLETE =====================
 $(tstamp) Configuration phase seems to have taken $(date -ud "@$SECONDS" '+%H:%M:%S') (@$SECONDS)"
